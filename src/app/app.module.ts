@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
 import { NgxsModule } from '@ngxs/store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NgxsModule } from '@ngxs/store';
     AppRoutingModule,
     CoreModule,
     NgxsModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

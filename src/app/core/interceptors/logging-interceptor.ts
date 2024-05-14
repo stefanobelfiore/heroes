@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable, finalize } from 'rxjs';
 import { LoaderService } from '../services/loading-request/loader.service';
 import { environment } from 'src/environments/environment';
+import { SafeAny } from '@app/shared/models/safe-types.models';
 
 @Injectable()
 export class LoggingInterceptor implements HttpInterceptor {
@@ -10,9 +11,9 @@ export class LoggingInterceptor implements HttpInterceptor {
 
   constructor(private loaderService: LoaderService) { }
 
-  private requests: HttpRequest<any>[] = [];
+  private requests: HttpRequest<SafeAny>[] = [];
 
-  removeRequest(req: HttpRequest<any>) {
+  removeRequest(req: HttpRequest<SafeAny>) {
     const i = this.requests.indexOf(req);
     if (i <= 0) {
       this.requests.splice(i, 1);
@@ -22,7 +23,7 @@ export class LoggingInterceptor implements HttpInterceptor {
 
 
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<SafeAny>, next: HttpHandler): Observable<HttpEvent<SafeAny>> {
 
     if (request.url.includes(environment.apiDefault)) {
 

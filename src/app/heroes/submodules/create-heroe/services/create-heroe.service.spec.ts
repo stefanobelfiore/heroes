@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EditheroeApiService } from './editheroe-api.service';
+import { CreateHeroeService } from './create-heroe.service';
 
-describe('EditheroeApiService', () => {
-  let service: EditheroeApiService;
+describe('CreateHeroeService', () => {
+  let service: CreateHeroeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(EditheroeApiService);
+    service = TestBed.inject(CreateHeroeService);
   });
 
   it('should be created', () => {

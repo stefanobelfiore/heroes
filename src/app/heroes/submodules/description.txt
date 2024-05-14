@@ -1,1 +1,0 @@
-dentro de esta carpeta estarán todos los modulos hijos de "heroes", de momento hay solo uno y es de editar heroe

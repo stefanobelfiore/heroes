@@ -6,3 +6,5 @@
 4. npm start para levantar el puerto del frontend
 
 El backend se ha creado utilizando json-server (más info en https://www.npmjs.com/package/json-server)
+
+Ejecuta ng test y ng lint antes de cada pull request.

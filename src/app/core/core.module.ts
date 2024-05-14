@@ -4,20 +4,22 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LoggingInterceptor } from './interceptors/logging-interceptor';
-import { CommonComponent } from './core-components/common-component/common.component';
 import { CoreComponentsModule } from './core-components/core-components.module';
+import { MaterialModule } from './libraries-modules/material/material.module';
 
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
-    CoreComponentsModule
+    CoreComponentsModule,
+    MaterialModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
   ],
   exports: [
-
+    CoreComponentsModule,
+    MaterialModule
   ],
   declarations: [
 
