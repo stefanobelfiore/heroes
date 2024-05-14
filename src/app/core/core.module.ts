@@ -10,7 +10,6 @@ import { MaterialModule } from './libraries-modules/material/material.module';
 
 @NgModule({
   imports: [
-    BrowserAnimationsModule,
     CoreComponentsModule,
     MaterialModule
   ],

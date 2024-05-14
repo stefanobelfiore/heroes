@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { NgxsModule } from '@ngxs/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialCustomizedComponentsModule } from './shared/components/material-customized-components/material-customized-components.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    MaterialCustomizedComponentsModule,
     NgxsModule.forRoot(),
     BrowserAnimationsModule,
   ],

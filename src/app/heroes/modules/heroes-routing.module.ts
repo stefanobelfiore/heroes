@@ -9,12 +9,25 @@ const routes: Routes = [
     component: HeroesPageComponent,
     children: [
       {
-        path: 'edit-heroes',
-        loadChildren: () => import('../submodules/edit-heroe/modules/edit-heroe.module').then(module => module.EditHeroeModule),
+        path: 'edit-hero',
+        loadChildren: () => import('../submodules/edit-hero/modules/edit-heroe.module').then(module => module.EditHeroModule),
       },
       {
         path: 'view-heroes',
         loadChildren: () => import('../submodules/view-heroes/modules/view-heroes.module').then(module => module.ViewHeroesModule),
+      },
+      {
+        path: 'create-hero',
+        loadChildren: () => import('../submodules/create-hero/modules/create-hero.module').then(module => module.CreateHeroModule),
+      },
+      {
+        path: '',
+        redirectTo: 'view-heroes',
+        pathMatch: 'full'
+      },
+      {
+        path: '**',
+        component: NotFoundPageComponent
       }
     ]
   }
