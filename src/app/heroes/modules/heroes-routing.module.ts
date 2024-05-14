@@ -13,12 +13,16 @@ const routes: Routes = [
         loadChildren: () => import('../submodules/edit-hero/modules/edit-heroe.module').then(module => module.EditHeroModule),
       },
       {
-        path: 'view-heroes',
-        loadChildren: () => import('../submodules/view-heroes/modules/view-heroes.module').then(module => module.ViewHeroesModule),
-      },
-      {
         path: 'create-hero',
         loadChildren: () => import('../submodules/create-hero/modules/create-hero.module').then(module => module.CreateHeroModule),
+      },
+      {
+        path: 'search-hero',
+        loadChildren: () => import('../submodules/search-hero/modules/search-hero.module').then(module => module.SearchHeroModule),
+      },
+      {
+        path: 'view-heroes',
+        loadChildren: () => import('../submodules/view-heroes/modules/view-heroes.module').then(module => module.ViewHeroesModule),
       },
       {
         path: '',

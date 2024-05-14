@@ -8,8 +8,8 @@ import { HeroCardItem } from './models/hero-card.models';
 })
 export class HeroCardComponent implements OnInit {
 
-  @Input()
-  public hero!: HeroCardItem;
+  @Input() public hero!: HeroCardItem | undefined;
+
 
 
   ngOnInit(): void {

@@ -16,6 +16,9 @@ import { RouterModule } from '@angular/router';
     CoreModule,
     SharedModule,
     RouterModule
+  ],
+  exports: [
+    HeroCardComponent
   ]
 })
 export class HeroesComponentsModule { }

@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { NgxsModule } from '@ngxs/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialCustomizedComponentsModule } from './shared/components/material-customized-components/material-customized-components.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MaterialCustomizedComponentsModule } from './shared/components/material
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CoreModule,
     MaterialCustomizedComponentsModule,
     NgxsModule.forRoot(),
