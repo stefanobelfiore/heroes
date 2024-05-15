@@ -6,6 +6,7 @@ import { CreateHeroRoutingModule } from './create-hero-routing.module';
 import { CoreModule } from '@app/core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateHeroeComponentsModule } from '../components/create-hero-components.module';
+import { HeroesComponentsModule } from '@app/heroes/components/heroes-components.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CreateHeroeComponentsModule } from '../components/create-hero-component
     FormsModule,
     ReactiveFormsModule,
     CreateHeroRoutingModule,
-    CreateHeroeComponentsModule
+    CreateHeroeComponentsModule,
+    HeroesComponentsModule
   ]
 })
 export class CreateHeroModule { }

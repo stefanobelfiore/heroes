@@ -8,7 +8,7 @@ import { HeroCardItem } from './models/hero-card.models';
 })
 export class HeroCardComponent implements OnInit {
 
-  @Input() public hero!: HeroCardItem | undefined;
+  @Input() public hero: HeroCardItem | undefined;
 
 
 

@@ -1,28 +1,35 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
 
 import { catchError, tap } from 'rxjs';
 import { HeroItem } from '../models/api/heroes-api.models';
-import { GetHeroes, SaveHero } from './heroes.actions';
+import { DeleteHero, GetHeroById, GetHeroes, SaveHero } from './heroes.actions';
 import { HeroesApiService } from '../services/api/heroes-api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 
 interface HeroesStateModel {
   heroes: HeroItem[],
+  heroById: HeroItem | null | undefined,//Caso undefined, estado inicializado, caso null, no se encontro el heroe
 }
 
 @State<HeroesStateModel>({
   name: 'HeroesState',
   defaults: {
     heroes: [],
+    heroById: undefined
   },
 })
 @Injectable()
 export class HeroesPageState {
   constructor(
     private store: Store,
-    public heroesApiService: HeroesApiService
+    public heroesApiService: HeroesApiService,
+    private snackbar: MatSnackBar,
+    public router: Router,
+    private zone: NgZone,
   ) { }
 
   @Action(GetHeroes, { cancelUncompleted: true })
@@ -60,23 +67,77 @@ export class HeroesPageState {
     ctx: StateContext<HeroesStateModel>,
     action: SaveHero
   ) {
+    const newIdToAddHero = crypto.randomUUID();
 
-    return this.heroesApiService
-      .getHeroes()
+    return action.payload.id ?
+      this.heroesApiService.updateHero(action.payload) :
+      this.heroesApiService.addHero({ ...action.payload, id: newIdToAddHero })
+        .pipe(
+          tap(() => {
+            this.zone.run(() => { this.showSnackbar(`${action.payload.superhero} ${action.payload.id ? 'actualizado!' : 'creado!'}`) })
+            this.router.navigateByUrl('heroes');
+          }),
+          catchError(() => {
+
+            this.showSnackbar(`${action.payload.superhero} error!`, 'error');
+            return 'error';
+          })
+        );
+  }
+
+
+
+  @Action(DeleteHero, { cancelUncompleted: true })
+  DeleteHero(
+    ctx: StateContext<HeroesStateModel>,
+    action: DeleteHero
+  ) {
+
+    return this.heroesApiService.deleteHeroById(action.payload.id)
       .pipe(
-        tap((result) => {
-          ctx.patchState({ heroes: result });
+        tap(() => {
+          this.zone.run(() => { this.showSnackbar(`${action.payload.superhero} borrado!`) })
+          this.router.navigateByUrl('heroes');
         }),
         catchError(() => {
-          ctx.patchState({
-            heroes: []
-          });
 
+          this.showSnackbar(`${action.payload.superhero} no se ha podido borrar!`, 'error');
           return 'error';
         })
       );
   }
 
+
+  @Action(GetHeroById, { cancelUncompleted: true })
+  getHeroById(
+    ctx: StateContext<HeroesStateModel>,
+    action: GetHeroById
+  ) {
+    return this.heroesApiService.getHeroById(action.payload.id)
+      .pipe(
+        tap((result) => {
+          ctx.patchState({ heroById: result })
+        }),
+        catchError(() => {
+          ctx.patchState({ heroById: null })
+          return 'error';
+        })
+      );
+  }
+
+
+  @Selector()
+  static getHeroById(state: HeroesStateModel): HeroItem | null | undefined {
+    return state.heroById;
+  }
+
+
+
+  showSnackbar(message: string, type: 'done' | 'error' = 'done'): void {
+    this.snackbar.open(message, type, {
+      duration: 2500,
+    })
+  }
 
 
 }

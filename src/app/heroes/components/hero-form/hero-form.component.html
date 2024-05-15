@@ -1,8 +1,9 @@
-<!-- <h1>
-  {{ heroForm.value.id ? 'Editar' : 'Agregar' }}
-  héroe
-  <small class="text-secondary" *ngIf="heroForm.value">{{ heroForm.value.superhero }}</small>
-</h1>
+<div class="title-container">
+  <h1>
+    {{ title }}
+  </h1>
+  <h2 class="text-secondary" *ngIf="heroForm.value">{{ heroForm.value.superhero }}</h2>
+</div>
 
 
 
@@ -27,7 +28,6 @@
       <input matInput type="text" required formControlName="first_appearance" />
     </mat-form-field>
 
-
     <mat-form-field>
       <mat-label>Creador</mat-label>
       <mat-select formControlName="publisher" required>
@@ -51,12 +51,10 @@
 
 
 
-    <button mat-flat-button color="primary" (click)="onSubmit()">
+    <button mat-flat-button color="primary" disabled="{{ !heroForm.valid }}" (click)="onSubmit()">
       <mat-icon>save</mat-icon>
       Guardar
     </button>
   </div>
 
-</div> -->
-
-<app-hero-form [title]="'Añadir heroe'" (emitSubmitForm)="handleSubmitForm($event)"></app-hero-form>
+</div>

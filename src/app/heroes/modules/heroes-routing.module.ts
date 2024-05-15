@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'edit-hero/:id',
-        loadChildren: () => import('../submodules/create-hero/modules/create-hero.module').then(module => module.CreateHeroModule),
+        loadChildren: () => import('../submodules/edit-hero/modules/edit-hero.module').then(module => module.EditHeroModule),
       },
       {
         path: 'create-hero',

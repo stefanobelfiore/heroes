@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonComponent } from '@app/core/core-components/common-component/common.component';
@@ -9,6 +9,9 @@ import { HeroesService } from '@app/heroes/services/heroes.service';
 import { filter, switchMap } from 'rxjs';
 import { HeroesApiService } from '../../../services/api/heroes-api.service';
 import { MatConfirmDialogCustomComponent } from '../components/mat-confirm-dialog-custom/mat-confirm-dialog-custom.component';
+import { Store } from '@ngxs/store';
+import { SaveHero } from '@app/heroes/ngxs/heroes.actions';
+import { HeroForm } from '@app/heroes/components/hero-form/models/hero-form-models';
 
 @Component({
   selector: 'app-create-heroe',
@@ -23,7 +26,6 @@ export class CreateHeroComponent extends CommonComponent implements OnInit {
     publisher: new FormControl<Publisher>('DC Comics'),
     alter_ego: new FormControl(''),
     first_appearance: new FormControl(''),
-    characters: new FormControl(''),
   });
 
   public publishers = [
@@ -39,84 +41,32 @@ export class CreateHeroComponent extends CommonComponent implements OnInit {
     private router: Router,
     private snackbar: MatSnackBar,
     private dialog: MatDialog,
+    public store: Store
   ) {
     super();
   }
   ngOnInit(): void {
-    if (!this.router.url.includes('edit')) return;
+    // if (!this.router.url.includes('edit')) return;
 
-    this.observableList.push(
-      this.activatedRoute.params
-        .pipe(
-          switchMap(({ id }) => this.heroesApiService.getHeroById(id)),
-        ).subscribe(hero => {
+    // this.observableList.push(
+    //   this.activatedRoute.params
+    //     .pipe(
+    //       switchMap(({ id }) => this.heroesApiService.getHeroById(id)),
+    //     ).subscribe(hero => {
 
-          if (!hero) {
-            return this.router.navigateByUrl('/');
-          }
+    //       if (!hero) {
+    //         return this.router.navigateByUrl('/');
+    //       }
 
-          this.heroForm.reset(hero);
-          return;
-        })
-    )
+    //       this.heroForm.reset(hero);
+    //       return;
+    //     })
+    // )
 
   }
-
-
-  onSubmit(): void {
-
+  handleSubmitForm(form: FormGroup<HeroForm>) {
     if (this.heroForm.invalid) return;
-
-    if (this.heroForm.value.id) {
-      this.heroesApiService.updateHero(this.heroForm.value as HeroItem)
-        .subscribe(hero => {
-          this.showSnackbar(`${hero.superhero} updated!`);
-        });
-
-      return;
-    }
-
-    this.heroForm.patchValue({ id: crypto.randomUUID() });
-    this.heroesApiService.addHero(this.heroForm.value as HeroItem)
-      .subscribe(hero => {
-        this.router.navigate(['heroes/edit-hero', hero.id]);
-        this.showSnackbar(`${hero.superhero} created!`);
-      });
+    this.store.dispatch(new SaveHero(form.value as HeroItem));
   }
 
-  onDeleteHero() {
-    if (!this.heroForm.value.id) throw Error('Hero id is required');
-
-    const dialogRef = this.dialog.open(MatConfirmDialogCustomComponent, {
-      data: this.heroForm.value
-    });
-
-    dialogRef.afterClosed()
-      .pipe(
-        filter((result: boolean) => result),
-        switchMap(() => this.heroesApiService.deleteHeroById(this.heroForm.value.id as string)),
-        filter((wasDeleted: boolean) => wasDeleted),
-      )
-      .subscribe(() => {
-        this.router.navigate(['/heroes']);
-      });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (!result) return;
-
-      this.heroesApiService.deleteHeroById(this.heroForm.value.id as string)
-        .subscribe(wasDeleted => {
-          if (wasDeleted)
-            this.router.navigate(['/heroes/view-heroes']);
-        })
-    });
-
-  }
-
-
-  showSnackbar(message: string): void {
-    this.snackbar.open(message, 'done', {
-      duration: 2500,
-    })
-  }
 }

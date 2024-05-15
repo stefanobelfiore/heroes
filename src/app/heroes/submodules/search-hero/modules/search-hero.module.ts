@@ -5,6 +5,7 @@ import { SearchHeroRoutingModule } from './search-hero-routing.module';
 import { SearchHeroComponent } from '../pages/search-hero.component';
 import { CoreModule } from '@app/core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeroesComponentsModule } from '@app/heroes/components/heroes-components.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CoreModule,
     ReactiveFormsModule,
-    SearchHeroRoutingModule
+    SearchHeroRoutingModule,
+    HeroesComponentsModule
   ]
 })
 export class SearchHeroModule { }

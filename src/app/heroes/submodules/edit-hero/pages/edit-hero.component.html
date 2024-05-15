@@ -1,1 +1,2 @@
-<p>edit-heroe works!</p>
+<app-hero-form [title]="'Editar heroe'" (emitSubmitForm)="handleSubmitForm($event)" [heroForm]="heroForm"
+  (emitDeleteHero)="handleDeleteHero()"></app-hero-form>

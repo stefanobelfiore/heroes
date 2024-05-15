@@ -16,7 +16,6 @@ export class HeroesService {
       publisher: hero.publisher,
       alterEgo: hero.alter_ego,
       firstAppearance: hero.first_appearance,
-      characters: hero.characters,
     }));
   }
 }

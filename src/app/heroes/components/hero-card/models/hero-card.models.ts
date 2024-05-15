@@ -8,6 +8,5 @@ export interface HeroCardItem {
   publisher: Publisher;
   alterEgo: string;
   firstAppearance: string;
-  characters: string;
 }
 

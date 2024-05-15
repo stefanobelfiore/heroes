@@ -22,7 +22,9 @@ export class HeroesApiService {
   }
 
   getSuggestions(query: string) {
-    return this.http.get<HeroItem[]>(`${environment.apiDefault}/heroes?q=${query}&_limit=6`);
+    return this.http.get<HeroItem[]>(`${environment.apiDefault}/heroes`, {
+      params: { superhero_like: query, _limit: 6 }
+    });
   }
 
 
@@ -36,13 +38,8 @@ export class HeroesApiService {
     return this.http.patch<HeroItem>(`${environment.apiDefault}/heroes/${hero.id}`, hero);
   }
 
-  deleteHeroById(id: string): Observable<boolean> {
-
+  deleteHeroById(id: string) {
     return this.http.delete(`${environment.apiDefault}/heroes/${id}`)
-      .pipe(
-        map(resp => true),
-        catchError(err => of(false)),
-      );
   }
 
 }

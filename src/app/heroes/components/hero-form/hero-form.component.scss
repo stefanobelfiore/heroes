@@ -1,0 +1,33 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+.form-content {
+  background-color: var(--white);
+  padding: 1rem;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.text-secondary {
+  color: var(--primary4, #002766);
+}
+
+.title-container {
+  display: flex;
+  align-items: baseline;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}

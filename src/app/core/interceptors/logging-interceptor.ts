@@ -31,7 +31,7 @@ export class LoggingInterceptor implements HttpInterceptor {
         this.loaderService.isLoading.set(this.requests.length > 0);
         request = request.clone();
         return next.handle(request).pipe(
-          delay(1000),//el back tarda muy poco, le pongo esto para que se pueda ver el spinner al cargar, es puramente estetico para la prueba
+          delay(200),//el back tarda muy poco, le pongo esto para que se pueda ver el spinner al cargar, es puramente estetico para la prueba
           finalize(() => {
             this.removeRequest(request)
           }),
