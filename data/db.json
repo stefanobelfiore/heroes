@@ -168,13 +168,12 @@
       "characters": "Norrin Radd"
     },
     {
-      "id": "",
-      "superhero": "patata",
+      "id": "6f0475da-b531-4b18-b962-dc302ad631fd",
+      "superhero": "prueba",
       "publisher": "DC Comics",
-      "alter_ego": "de",
-      "first_appearance": "dfr",
-      "characters": "dddd",
-      "alt_img": ""
+      "alter_ego": "alter",
+      "first_appearance": "no s ",
+      "characters": "caca"
     }
   ]
 }

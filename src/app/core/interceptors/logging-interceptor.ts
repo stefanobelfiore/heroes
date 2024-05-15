@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable, finalize } from 'rxjs';
+import { Observable, delay, finalize } from 'rxjs';
 import { LoaderService } from '../services/loading-request/loader.service';
 import { environment } from 'src/environments/environment';
 import { SafeAny } from '@app/shared/models/safe-types.models';
@@ -26,12 +26,12 @@ export class LoggingInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<SafeAny>, next: HttpHandler): Observable<HttpEvent<SafeAny>> {
 
     if (request.url.includes(environment.apiDefault)) {
-
+      this.requests = [...this.requests, request];
       try {
         this.loaderService.isLoading.set(this.requests.length > 0);
         request = request.clone();
-
         return next.handle(request).pipe(
+          delay(1000),//el back tarda muy poco, le pongo esto para que se pueda ver el spinner al cargar, es puramente estetico para la prueba
           finalize(() => {
             this.removeRequest(request)
           }),

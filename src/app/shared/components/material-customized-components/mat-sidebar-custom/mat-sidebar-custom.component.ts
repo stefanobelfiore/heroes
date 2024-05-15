@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatSidebarItem } from './models/mat-sidebar-items.models';
 
 @Component({
-  selector: 'mat-sidebar-custom',
+  selector: 'app-mat-sidebar-custom',
   templateUrl: './mat-sidebar-custom.component.html',
   styleUrls: ['./mat-sidebar-custom.component.scss']
 })

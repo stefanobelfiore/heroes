@@ -9,8 +9,8 @@ const routes: Routes = [
     component: HeroesPageComponent,
     children: [
       {
-        path: 'edit-hero',
-        loadChildren: () => import('../submodules/edit-hero/modules/edit-heroe.module').then(module => module.EditHeroModule),
+        path: 'edit-hero/:id',
+        loadChildren: () => import('../submodules/create-hero/modules/create-hero.module').then(module => module.CreateHeroModule),
       },
       {
         path: 'create-hero',

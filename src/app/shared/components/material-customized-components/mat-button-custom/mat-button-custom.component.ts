@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'mat-button-custom',
+  selector: 'app-mat-button-custom',
   templateUrl: './mat-button-custom.component.html',
   styleUrls: ['./mat-button-custom.component.scss']
 })

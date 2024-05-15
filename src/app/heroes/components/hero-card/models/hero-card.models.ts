@@ -9,6 +9,5 @@ export interface HeroCardItem {
   alterEgo: string;
   firstAppearance: string;
   characters: string;
-  altImg?: string;
 }
 

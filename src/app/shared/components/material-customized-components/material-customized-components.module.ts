@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     MatSpinnerCustomComponent,
     MatButtonCustomComponent,
-    MatSidebarCustomComponent
+    MatSidebarCustomComponent,
   ],
   imports: [
     CommonModule,
