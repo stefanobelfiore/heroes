@@ -54,10 +54,6 @@ export class HeroesPageState {
   }
 
 
-  @Selector()
-  static getHeroes(state: HeroesStateModel): HeroItem[] {
-    return state.heroes;
-  }
 
 
 
@@ -69,20 +65,24 @@ export class HeroesPageState {
   ) {
     const newIdToAddHero = crypto.randomUUID();
 
-    return action.payload.id ?
+    const saveObservable = action.payload.id ?
       this.heroesApiService.updateHero(action.payload) :
-      this.heroesApiService.addHero({ ...action.payload, id: newIdToAddHero })
-        .pipe(
-          tap(() => {
-            this.zone.run(() => { this.showSnackbar(`${action.payload.superhero} ${action.payload.id ? 'actualizado!' : 'creado!'}`) })
-            this.router.navigateByUrl('heroes');
-          }),
-          catchError(() => {
+      this.heroesApiService.addHero({ ...action.payload, id: newIdToAddHero });
 
-            this.showSnackbar(`${action.payload.superhero} error!`, 'error');
-            return 'error';
-          })
-        );
+    return saveObservable.pipe(
+      tap(() => {
+        this.zone.run(() => {
+          const message = action.payload.id ? 'actualizado!' : 'creado!';
+          this.showSnackbar(`${action.payload.superhero} ${message}`);
+          this.router.navigateByUrl('heroes');
+        })
+      }),
+      catchError(() => {
+        const errorType = action.payload.id ? 'error' : 'error';
+        this.showSnackbar(`${action.payload.superhero} ${errorType}`, errorType);
+        return errorType;
+      })
+    );
   }
 
 
@@ -96,8 +96,11 @@ export class HeroesPageState {
     return this.heroesApiService.deleteHeroById(action.payload.id)
       .pipe(
         tap(() => {
-          this.zone.run(() => { this.showSnackbar(`${action.payload.superhero} borrado!`) })
-          this.router.navigateByUrl('heroes');
+          this.zone.run(() => {
+            this.showSnackbar(`${action.payload.superhero} borrado!`);
+            this.router.navigateByUrl('heroes');;
+          })
+
         }),
         catchError(() => {
 
@@ -131,6 +134,10 @@ export class HeroesPageState {
     return state.heroById;
   }
 
+  @Selector()
+  static getHeroes(state: HeroesStateModel): HeroItem[] {
+    return state.heroes;
+  }
 
 
   showSnackbar(message: string, type: 'done' | 'error' = 'done'): void {

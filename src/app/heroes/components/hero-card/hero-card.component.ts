@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HeroCardItem } from './models/hero-card.models';
 
 @Component({
@@ -6,13 +6,9 @@ import { HeroCardItem } from './models/hero-card.models';
   templateUrl: './hero-card.component.html',
   styleUrls: ['./hero-card.component.scss']
 })
-export class HeroCardComponent implements OnInit {
+export class HeroCardComponent {
 
   @Input() public hero: HeroCardItem | undefined;
 
 
-
-  ngOnInit(): void {
-    if (!this.hero) throw Error('Hero property is required');
-  }
 }

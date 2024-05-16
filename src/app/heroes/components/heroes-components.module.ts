@@ -6,6 +6,7 @@ import { HeroCardComponent } from './hero-card/hero-card.component';
 import { RouterModule } from '@angular/router';
 import { HeroFormComponent } from './hero-form/hero-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatConfirmDialogCustomComponent } from './mat-confirm-dialog-custom/mat-confirm-dialog-custom.component';
 
 
 
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     HeroCardComponent,
     HeroFormComponent,
+    MatConfirmDialogCustomComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     HeroCardComponent,
     HeroFormComponent,
+    MatConfirmDialogCustomComponent
   ]
 })
 export class HeroesComponentsModule { }

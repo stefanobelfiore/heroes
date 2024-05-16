@@ -3,8 +3,8 @@
 
 <div class="grid-cards">
 
-  <div *ngFor="let hero of heroes" class="col-12 sm:col-4 md:col-3 xl:col-2">
+  <ng-container *ngFor="let hero of heroes">
     <app-hero-card [hero]="hero"></app-hero-card>
-  </div>
+  </ng-container>
 
 </div>

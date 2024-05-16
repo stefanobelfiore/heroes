@@ -1,6 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroesPageComponent } from './heroes-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { CoreModule } from '@app/core/core.module';
+import { SharedComponentsModule } from '@app/shared/components/shared-components.module';
+import { environment } from '@environments/environment';
+import { NgxsModule } from '@ngxs/store';
+import { HeroesComponentsModule } from '../components/heroes-components.module';
 
 describe('HeroesPageComponent', () => {
   let component: HeroesPageComponent;
@@ -8,7 +17,20 @@ describe('HeroesPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeroesPageComponent]
+      declarations: [HeroesPageComponent],
+
+      imports: [
+        HttpClientModule,
+        NgxsModule.forRoot(undefined, {
+          developmentMode: !environment.production,
+        }),
+        SharedComponentsModule,
+        BrowserAnimationsModule,
+        CoreModule,
+        HttpClientTestingModule,
+        HeroesComponentsModule,
+        AppRoutingModule,
+      ]
     });
     fixture = TestBed.createComponent(HeroesPageComponent);
     component = fixture.componentInstance;

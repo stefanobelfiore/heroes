@@ -1,23 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatSidebarCustomComponent } from './mat-sidebar-custom.component';
+import { MatConfirmDialogCustomComponent } from './mat-confirm-dialog-custom.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '@app/app-routing.module';
 import { CoreModule } from '@app/core/core.module';
-import { HeroesComponentsModule } from '@app/heroes/components/heroes-components.module';
+import { SharedComponentsModule } from '@app/shared/components/shared-components.module';
 import { environment } from '@environments/environment';
 import { NgxsModule } from '@ngxs/store';
-import { SharedComponentsModule } from '../../shared-components.module';
+import { HeroesComponentsModule } from '../heroes-components.module';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
-describe('MatSidebarCustomComponent', () => {
-  let component: MatSidebarCustomComponent;
-  let fixture: ComponentFixture<MatSidebarCustomComponent>;
+describe('MatConfirmDialogCustomComponent', () => {
+  let component: MatConfirmDialogCustomComponent;
+  let fixture: ComponentFixture<MatConfirmDialogCustomComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MatSidebarCustomComponent],
+      declarations: [MatConfirmDialogCustomComponent],
 
       imports: [
         HttpClientModule,
@@ -27,12 +28,20 @@ describe('MatSidebarCustomComponent', () => {
         SharedComponentsModule,
         BrowserAnimationsModule,
         CoreModule,
+        MatDialogModule,
         HttpClientTestingModule,
         HeroesComponentsModule,
         AppRoutingModule,
-      ]
+      ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        {
+          provide: MatDialogRef,
+          useValue: {}
+        },
+      ],
     });
-    fixture = TestBed.createComponent(MatSidebarCustomComponent);
+    fixture = TestBed.createComponent(MatConfirmDialogCustomComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

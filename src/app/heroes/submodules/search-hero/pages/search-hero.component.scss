@@ -1,7 +1,36 @@
 .container-box {
-  // flex flex-column p-2
   display: flex;
   gap: 1rem;
   flex-direction: column;
   padding: 2rem
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  padding-top: 1rem;
+}
+
+
+@media screen and (max-width: 1600px) {
+  .grid-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .grid-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .grid-cards {
+    grid-template-columns: 1fr;
+  }
+
 }

@@ -29,26 +29,10 @@ export class HeroFormComponent {
 
 
   onSubmit(): void {
-
     this.emitSubmitForm.emit(this.heroForm)
-    // if (this.heroForm.value.id) {
-    //   this.heroesApiService.updateHero(this.heroForm.value as HeroItem)
-    //     .subscribe(hero => {
-    //       this.showSnackbar(`${hero.superhero} updated!`);
-    //     });
-
-    //   return;
-    // }
-
-    // this.heroForm.patchValue({ id: crypto.randomUUID() });
-    // this.heroesApiService.addHero(this.heroForm.value as HeroItem)
-    //   .subscribe(hero => {
-    //     this.router.navigate(['heroes/edit-hero', hero.id]);
-    //     this.showSnackbar(`${hero.superhero} created!`);
-    //   });
   }
 
-  onDeleteHero() {
+  onDeleteHero(): void {
     if (!this.heroForm.value.id) throw Error('Hero id is required');
     this.emitDeleteHero.emit();
   }

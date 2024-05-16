@@ -8,7 +8,7 @@
   ],
   "heroes": [
     {
-      "id": "dc-batman",
+      "id": "0ae9d761-a446-4c73-bf47-375812b5d969",
       "superhero": "Batman",
       "publisher": "DC Comics",
       "alter_ego": "Bruce Wayne",
@@ -16,7 +16,7 @@
       "characters": "Bruce Wayne"
     },
     {
-      "id": "dc-superman",
+      "id": "8cb24c19-ec3e-4049-aa1b-366216df130b",
       "superhero": "Superman",
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
@@ -24,7 +24,7 @@
       "characters": "Kal-El"
     },
     {
-      "id": "dc-flash",
+      "id": "f07289a5-e5bc-4146-b0c7-b8cf9963ec32",
       "superhero": "Flash",
       "publisher": "DC Comics",
       "alter_ego": "Jay Garrick",
@@ -32,7 +32,7 @@
       "characters": "Jay Garrick, Barry Allen, Wally West, Bart Allen"
     },
     {
-      "id": "dc-green",
+      "id": "9c2ad3ee-5620-4a3c-9fd5-863fab0f9378",
       "superhero": "Green Lantern",
       "publisher": "DC Comics",
       "alter_ego": "Alan Scott",
@@ -40,7 +40,7 @@
       "characters": "Alan Scott, Hal Jordan, Guy Gardner, John Stewart, Kyle Raynor, Jade, Sinestro, Simon Baz"
     },
     {
-      "id": "dc-arrow",
+      "id": "3c6dbe7f-0800-4a4c-bb73-518b4c6e208c",
       "superhero": "Green Arrow",
       "publisher": "DC Comics",
       "alter_ego": "Oliver Queen",
@@ -48,7 +48,7 @@
       "characters": "Oliver Queen"
     },
     {
-      "id": "dc-wonder",
+      "id": "933b699e-093e-4905-914d-6609b71d61f8",
       "superhero": "Wonder Woman",
       "publisher": "DC Comics",
       "alter_ego": "Princess Diana",
@@ -56,7 +56,7 @@
       "characters": "Princess Diana"
     },
     {
-      "id": "dc-martian",
+      "id": "ded4ac15-b6f9-4faa-9447-7d3f8e600853",
       "superhero": "Martian Manhunter",
       "publisher": "DC Comics",
       "alter_ego": "J\"onn J\"onzz",
@@ -64,7 +64,7 @@
       "characters": "Martian Manhunter"
     },
     {
-      "id": "dc-robin",
+      "id": "8b0a8d77-bc39-4873-92d5-2812518b7e21",
       "superhero": "Robin/Nightwing",
       "publisher": "DC Comics",
       "alter_ego": "Dick Grayson",
@@ -72,7 +72,7 @@
       "characters": "Dick Grayson"
     },
     {
-      "id": "dc-blue",
+      "id": "4012828b-4884-4d70-8ab2-2c078b37cb8c",
       "superhero": "Blue Beetle",
       "publisher": "DC Comics",
       "alter_ego": "Dan Garret",
@@ -80,7 +80,7 @@
       "characters": "Dan Garret, Ted Kord, Jaime Reyes"
     },
     {
-      "id": "dc-black",
+      "id": "5b488c33-241f-4047-acca-a4f9adadfa88",
       "superhero": "Black Canary",
       "publisher": "DC Comics",
       "alter_ego": "Dinah Drake",
@@ -88,7 +88,7 @@
       "characters": "Dinah Drake, Dinah Lance"
     },
     {
-      "id": "marvel-spider",
+      "id": "69612bec-7cc1-40e3-97c9-82621bc7ded0",
       "superhero": "Spider Man",
       "publisher": "Marvel Comics",
       "alter_ego": "Peter Parker",
@@ -96,7 +96,7 @@
       "characters": "Peter Parker"
     },
     {
-      "id": "marvel-captain",
+      "id": "39a15d43-5822-427a-8cfd-8acba87cbc65",
       "superhero": "Captain America",
       "publisher": "Marvel Comics",
       "alter_ego": "Steve Rogers",
@@ -104,7 +104,7 @@
       "characters": "Steve Rogers"
     },
     {
-      "id": "marvel-iron",
+      "id": "b7b8e2ac-3e2d-43d5-a212-54eebab301d5",
       "superhero": "Iron Man",
       "publisher": "Marvel Comics",
       "alter_ego": "Tony Stark",
@@ -112,7 +112,7 @@
       "characters": "Tony Stark"
     },
     {
-      "id": "marvel-thor",
+      "id": "684d027d-1d88-4331-93d0-199866fae299",
       "superhero": "Thor",
       "publisher": "Marvel Comics",
       "alter_ego": "Thor Odinson",
@@ -120,7 +120,7 @@
       "characters": "Thor Odinson"
     },
     {
-      "id": "marvel-hulk",
+      "id": "23f6c957-02d3-499d-8a52-9ae0e2bed1f8",
       "superhero": "Hulk",
       "publisher": "Marvel Comics",
       "alter_ego": "Bruce Banner",
@@ -128,7 +128,7 @@
       "characters": "Bruce Banner"
     },
     {
-      "id": "marvel-wolverine",
+      "id": "12b3ab73-f8c3-4577-8351-5f36234a2a40",
       "superhero": "Wolverine",
       "publisher": "Marvel Comics",
       "alter_ego": "James Howlett",
@@ -136,7 +136,7 @@
       "characters": "James Howlett"
     },
     {
-      "id": "marvel-daredevil",
+      "id": "5e724c38-97ad-46ee-a454-e2ee5693426b",
       "superhero": "Daredevil",
       "publisher": "Marvel Comics",
       "alter_ego": "Matthew Michael Murdock",
@@ -144,7 +144,7 @@
       "characters": "Matthew Michael Murdock"
     },
     {
-      "id": "marvel-hawkeye",
+      "id": "b7532e1c-42a9-4916-8080-e3833fad0928",
       "superhero": "Hawkeye",
       "publisher": "Marvel Comics",
       "alter_ego": "Clinton Francis Barton",
@@ -152,7 +152,7 @@
       "characters": "Clinton Francis Barton"
     },
     {
-      "id": "marvel-cyclops",
+      "id": "52ab74f9-bfe5-421e-9cd4-9396a5ad1cdc",
       "superhero": "Cyclops",
       "publisher": "Marvel Comics",
       "alter_ego": "Scott Summers",
@@ -160,7 +160,7 @@
       "characters": "Scott Summers"
     },
     {
-      "id": "marvel-silver",
+      "id": "4978b16b-fc11-4edd-be94-98deff28b303",
       "superhero": "Silver Surfer",
       "publisher": "Marvel Comics",
       "alter_ego": "Norrin Radd",
